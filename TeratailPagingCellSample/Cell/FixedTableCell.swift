@@ -1,5 +1,5 @@
 //
-//  TableCell.swift
+//  FixedTableCell.swift
 //  TeratailPagingCellSample
 //
 //  Created by 山田隼也 on 2020/05/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableCell: UITableViewCell {
+class FixedTableCell: UITableViewCell {
     
     // MARK: IBOutlet
 
@@ -21,9 +21,9 @@ class TableCell: UITableViewCell {
     
     // MARK: Properties
     
-    static let reuseIdentifier = "TableCell"
+    static let reuseIdentifier = "FixedTableCell"
     static var nib: UINib {
-        return UINib(nibName: "TableCell", bundle: nil)
+        return UINib(nibName: "FixedTableCell", bundle: nil)
     }
     
     var onScrollViewDidEndDecelerating: ((_ page: Int) -> Void)?
@@ -52,7 +52,7 @@ class TableCell: UITableViewCell {
     }
 }
 
-extension TableCell: UIScrollViewDelegate {
+extension FixedTableCell: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let page = Int(scrollView.contentOffset.x / scrollView.frame.width)

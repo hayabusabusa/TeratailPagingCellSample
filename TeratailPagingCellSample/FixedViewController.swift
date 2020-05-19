@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FixedViewController.swift
 //  TeratailPagingCellSample
 //
 //  Created by 山田隼也 on 2020/05/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FixedViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
 
 // MARK: - Configure
 
-extension ViewController {
+extension FixedViewController {
     
     private func configureTableView() {
         tableView.dataSource = self
@@ -47,18 +47,18 @@ extension ViewController {
         tableView.separatorInset = .zero
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 286
-        tableView.register(TableCell.nib, forCellReuseIdentifier: TableCell.reuseIdentifier)
+        tableView.register(FixedTableCell.nib, forCellReuseIdentifier: FixedTableCell.reuseIdentifier)
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension FixedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell    = tableView.dequeueReusableCell(withIdentifier: TableCell.reuseIdentifier, for: indexPath) as! TableCell
+        let cell    = tableView.dequeueReusableCell(withIdentifier: FixedTableCell.reuseIdentifier, for: indexPath) as! FixedTableCell
         let model   = dataSource[indexPath.row]
         cell.configure(with: model.page, descriptionText: model.descriptionText)
         cell.onScrollViewDidEndDecelerating = { [weak self] page in
@@ -72,7 +72,7 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension FixedViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
